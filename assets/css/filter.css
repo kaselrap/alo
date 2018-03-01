@@ -1,0 +1,21 @@
+.st-category-list {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+.st-category-list .st-category-item {
+  font-size: 14px;
+  color: var(--dark-color);
+  padding: 0 15px;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-transition: color 0.2s ease-in;
+  -moz-transition: color 0.2s ease-in;
+  -ms-transition: color 0.2s ease-in;
+  -o-transition: color 0.2s ease-in;
+  transition: color 0.2s ease-in;
+}
+.st-category-list .st-category-item:hover,
+.st-category-list .st-category-item.active {
+  color: var(--accent-color);
+}

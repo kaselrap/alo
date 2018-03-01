@@ -1,0 +1,43 @@
+@font-face {
+  font-family: Roboto-Light;
+  src: url("../fonts/Roboto/Roboto-Light.ttf");
+}
+.button {
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  transition: background 0.2s ease-in-out;
+}
+.button:hover {
+  transition: background 0.2s ease-in-out;
+}
+#style_one {
+  background: var(--accent-color);
+  border: var(--accent-color);
+  border-radius: 5px;
+  color: #fff;
+  padding: 15px 42px;
+}
+#style_one:hover {
+  background: var(--dark-color);
+}
+#style_two {
+  background: transparent;
+  border: var(--accent-color);
+  color: var(--accent-color);
+  padding: 15px 42px;
+}
+#style_two:hover {
+  background: var(--accent-color);
+}
+#style_three {
+  background: transparent;
+  border: var(--accent-color);
+  border-top: 1px solid var(--accent-color);
+  border-bottom: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 15px 42px;
+}
+#style_three:hover {
+  background: var(--accent-color);
+}

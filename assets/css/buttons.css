@@ -1,0 +1,107 @@
+.button {
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  transition: background 0.2s ease-in-out;
+}
+.button:hover {
+  transition: background 0.2s ease-in-out;
+}
+.st-btn {
+  font-family: inherit;
+  position: relative;
+  width: auto;
+  outline: 0;
+  border-radius: 5px;
+  margin: 0;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  transition: background 0.2s ease-in-out;
+}
+.st-btn:hover {
+  transition: background 0.2s ease-in-out;
+}
+.st-btn.st-border-radius-none {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.st-btn.st-btn-solid {
+  background: var(--accent-color);
+  border: var(--accent-color);
+  color: #fff;
+}
+.st-btn.st-btn-solid:hover {
+  background: var(--dark-color);
+}
+.st-btn.st-btn-outline {
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+}
+.st-btn.st-btn-outline:hover {
+  background: var(--accent-color);
+  color: #fff;
+}
+.st-btn.st-btn-outline-tb {
+  background: transparent;
+  border-top: 1px solid var(--accent-color);
+  border-bottom: 1px solid var(--accent-color);
+  color: var(--accent-color);
+}
+.st-btn.st-btn-radius {
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+}
+.st-btn.st-btn-small {
+  padding: 15px 34px;
+}
+.st-btn.st-btn-medium {
+  padding: 18px 37px;
+}
+.st-btn.st-btn-large {
+  padding: 20px 42px;
+}
+.st-btn.st-btn-extra-large {
+  padding: 24px 47px;
+}
+.st-btn.st-btn-huge {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  padding: 24px 63px;
+}
+.style_one {
+  background: var(--accent-color);
+  border: var(--accent-color);
+  border-radius: 5px;
+  color: #fff;
+  padding: 15px 42px;
+}
+.style_one:hover {
+  background: var(--dark-color);
+}
+.style_two {
+  background: transparent;
+  border: var(--accent-color);
+  color: var(--accent-color);
+  padding: 15px 42px;
+}
+.style_two:hover {
+  background: var(--accent-color);
+}
+.style_three {
+  background: transparent;
+  border: var(--accent-color);
+  border-top: 1px solid var(--accent-color);
+  border-bottom: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 15px 42px;
+}
+.style_three:hover {
+  background: var(--accent-color);
+}

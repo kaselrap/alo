@@ -1,0 +1,12 @@
+:root {
+ 	--accent-color: #0078FF;
+	--accent-color-darken: #0050ad;
+ 	--background-color: #fff;
+ 	--content-color: #777;
+ 	--header-h1-to-h5-color: #222;
+ 	--header-h6-color: #777;
+ 	--header-bg-color: #fff;
+ 	--dark-color: #222;
+	--gray-color: #777;
+	--light-gray-color: #e1e1e1;
+}

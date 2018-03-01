@@ -1,0 +1,7 @@
+.st-call-to-action {
+	display: flex;
+	justify-content: space-between;
+}
+.st-call-to-action .st-cta-text-holder h3.st-sta-text {
+	text-transform: uppercase;
+}

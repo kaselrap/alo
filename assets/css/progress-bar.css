@@ -1,0 +1,41 @@
+.st-progress-bar {
+  position: relative;
+  width: 100%;
+}
+.st-progress-bar .st-pb-title-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin: 35px 0 5px;
+  color: var(--content-color);
+}
+.st-progress-bar .st-pb-title-holder .st-pb-percent {
+  opacity: 0;
+}
+.st-progress-bar .st-pb-title-holder .st-pb-percent:after {
+  content: '%';
+}
+.st-progress-bar .st-pb-content-holder {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background: var(--light-gray-color);
+  z-index: 5;
+}
+.st-progress-bar .st-pb-content-holder .st-pb-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  max-width: 100%;
+  background: var(--accent-color);
+  -webkit-transition: width .2s ease;
+  -moz-transition: width .2s ease;
+  -ms-transition: width .2s ease;
+  -o-transition: width .2s ease;
+  transition: width .2s ease;
+  z-index: 6;
+}
