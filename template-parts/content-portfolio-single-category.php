@@ -7,6 +7,7 @@
  * @package ALO
  */
 ?>
+<?php global $options_data; ?>
 <ul>
     <?php
     $categories = get_the_terms( get_the_ID(), 'fw-portfolio-category' );

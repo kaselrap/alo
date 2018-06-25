@@ -7,9 +7,8 @@
  * @package ALO
  */
 ?>
-
+<?php global $options_data; ?>
 <?php
-
 $category_list = fw_ext_portfolio_get_listing_categories('*');
 if ( !empty($category_list) ): ?>
     <div class="st-filter filter-options">

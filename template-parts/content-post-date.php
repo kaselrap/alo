@@ -7,7 +7,7 @@
  * @package ALO
  */
 ?>
-
+<?php global $options_data; ?>
 <?php
 
 $data = get_the_date('F d, Y');

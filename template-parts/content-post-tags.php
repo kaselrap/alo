@@ -7,7 +7,7 @@
  * @package ALO
  */
 ?>
-
+<?php global $options_data; ?>
 <?php
 
 $tags = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'alo' ));

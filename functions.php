@@ -153,6 +153,7 @@ function alo_styles() {
 add_action( 'wp_enqueue_scripts', 'alo_styles' );
 
 function alo_scripts() {
+    wp_enqueue_script('jquery');
 
     wp_enqueue_script( 'alo-navigation', get_template_directory_uri() . '/assets/js/navigation.js', 'jquery', '20151215', true );
 
@@ -255,13 +256,13 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 require get_template_directory() . '/tgm/alo.php';
 
-function _action_theme_wp_print_styles() {
+function _action_theme_options_data() {
     if (!defined('FW')) return; // prevent fatal error when the framework is not active
     global $options_data;
     $options_data = fw_get_db_customizer_option();
 }
 
-add_action('wp_print_styles', '_action_theme_wp_print_styles');
+add_action('init', '_action_theme_options_data');
 
 add_filter('show_admin_bar', '__return_false');
 
@@ -394,52 +395,53 @@ function negativeNumeric ($num) {
 }
 
 function alo_load_more_script() {
-
-    global $wp_query;
-
-    // In most cases it is already included on the page and this line can be removed
-    wp_enqueue_script('jquery');
-
     // register our main script but do not enqueue it yet
     wp_register_script( 'loadmore', get_template_directory_uri()  . '/assets/js/loadmore.js', array('jquery') );
 
     // now the most interesting part
     // we have to pass parameters to myloadmore.js script but we can get the parameters values only in PHP
     // you can define variables directly in your HTML but I decided that the most proper way is wp_localize_script()
-    wp_localize_script( 'loadmore', 'alo_load_more_script', array(
+    wp_localize_script( 'loadmore', 'alo_load_more_params', array(
         'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
-        'posts' => json_encode( $wp_query->query_vars ), // everything about your loop is here
-        'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
-        'max_page' => $wp_query->max_num_pages
     ) );
 
-    wp_enqueue_script( 'my_loadmore' );
+    wp_enqueue_script( 'loadmore' );
 }
 
 add_action( 'wp_enqueue_scripts', 'alo_load_more_script' );
 
 function alo_loadmore_ajax_handler(){
-
     // prepare our arguments for the query
-    $args = json_decode( stripslashes( $_POST['query'] ), true );
-    $args['paged'] = $_POST['page'] + 1; // we need next page to be loaded
-    $args['post_status'] = 'publish';
-
+    $paged = $_POST['page'] + 1; // we need next page to be loaded
+    if ( isset ($_POST['posts_per_page']) && !empty($_POST['posts_per_page']) ) {
+        $posts_per_page = $_POST['posts_per_page'];
+    }
+    if ( isset ($_POST['category__in']) && !empty($_POST['category__in']) ) {
+        $categories__in = explode(',', $_POST['category__in']);
+    }
+    if ( isset ($_POST['category__not_in']) && !empty($_POST['category__not_in']) ) {
+        $categories__not_in = explode(',', $_POST['category__not_in']);
+    }
     // it is always better to use WP_Query but not here
-    query_posts( $args );
+    $args = array(
+        'posts_per_page'   => $posts_per_page,
+        'post_status'      => 'publish',
+        'paged'            => $paged,
+        'category__in'     => $categories__in,
+        'category__not_in' => $categories__not_in
 
-    if( have_posts() ) :
+    );
+    $query = new WP_Query($args);
+    if( $query->have_posts() ) :
 
         // run the loop
-        while( have_posts() ): the_post();
+        while( $query->have_posts() ): $query->the_post();
 
             // look into your theme code how the posts are inserted, but you can use your own HTML of course
             // do you remember? - my example is adapted for Twenty Seventeen theme
             get_template_part( 'template-parts/content', 'blog-standart' );
             // for the test purposes comment the line above and uncomment the below one
             // the_title();
-
-
         endwhile;
 
     endif;
@@ -447,3 +449,4 @@ function alo_loadmore_ajax_handler(){
 }
 
 add_action('wp_ajax_loadmore', 'alo_loadmore_ajax_handler'); // wp_ajax_{action}
+add_action('wp_ajax_nopriv_loadmore', 'misha_loadmore_ajax_handler'); // wp_ajax_nopriv_{action}

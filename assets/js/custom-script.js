@@ -216,8 +216,6 @@
                 $(this).waitForImages(function() {
                     $(this).masonry({
                         itemSelector: 'article',
-                        percentPosition: true,
-                        fitWidth: true,
 						gutter: '.st-masonry-gutter',
 						columnWidth: '.st-masonry-sizer'
                     });

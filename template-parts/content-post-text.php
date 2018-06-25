@@ -10,7 +10,7 @@
 <?php global $options_data; ?>
 <div class="st-post-text">
     <div class="st-post-info-head">
-        <?php if ( is_singular() ): ?>
+        <?php if ( is_singular() && !is_page() ): ?>
             <?php get_template_part('template-parts/content-post-category'); ?>
         <?php else: ?>
             <div class="st-author-post">
@@ -27,11 +27,12 @@
     <div class="st-post-info-main">
         <?php get_template_part('template-parts/content-post-title'); ?>
         <div class="st-separator"></div>
-        <?php get_template_part('template-parts/content-post-content'); ?>
+<!--        --><?php //get_template_part('template-parts/content-post-content'); ?>
+        <?php the_excerpt(); ?>
     </div>
     <div class="st-post-info-foot">
         <div class="st-post-info-foot-left">
-            <?php if ( is_singular() ): ?>
+            <?php if ( is_singular() && !is_page() ): ?>
                 <?php get_template_part('template-parts/content-post-tags'); ?>
             <?php else: ?>
                 <div class="st-read-more-btn">

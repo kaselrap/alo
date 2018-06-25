@@ -7,10 +7,11 @@
  * @package ALO
  */
 ?>
+<?php global $options_data; ?>
 <div class="st-post-heading">
     <div class="st-post-info-main">
         <span class="fa fa-link st-quote"></span>
-        <?php if ( is_singular() ) : ?>
+        <?php if ( is_singular() && !is_page() ) : ?>
             <span class="st-title-link">
                 <p><?php echo fw_get_db_post_option(get_the_ID(),'post_link'); ?></p>
             </span>

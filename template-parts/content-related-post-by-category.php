@@ -7,7 +7,7 @@
  * @package ALO
  */
 ?>
-
+<?php global $options_data; ?>
 <?php
 $original_posts = $post;
 global $post;

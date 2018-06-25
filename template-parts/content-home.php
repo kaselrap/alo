@@ -8,5 +8,5 @@
  */
 
 ?>
-
+    <?php global $options_data; ?>
 	<?php the_content(); ?>

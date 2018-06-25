@@ -7,10 +7,11 @@
  * @package ALO
  */
 ?>
+<?php global $options_data; ?>
 <div class="st-post-heading">
     <?php $imgs =  fw_get_db_post_option(get_the_ID(),'gallery_images'); ?>
-    <div class="st-post-gallery owl-carousel">
-        <?php if ( is_singular() ) : ?>
+    <div class="st-post-gallery owl-carousel st-owl-slider">
+        <?php if ( is_singular() && !is_page() ) : ?>
             <?php foreach ($imgs as $img) : ?>
                 <a href="<?php echo $img['url']; ?>" data-rel="prettyPhoto[gallery-<?php echo get_the_ID(); ?>]">
                     <img src="<?php echo $img['url']; ?>">
